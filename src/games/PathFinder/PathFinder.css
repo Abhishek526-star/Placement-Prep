@@ -1,0 +1,604 @@
+/* src/games/PathFinder/PathFinder.css */
+/* Modern, high-contrast styles for Accenture Path Finder Cognitive Game */
+
+.pf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px 36px;
+  position: relative;
+  font-family: inherit;
+}
+
+/* Variant Selector Tabs */
+.pf-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.pf-tab {
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  padding: 8px 18px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-tab:hover {
+  border-color: #f97316;
+  color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.pf-tab.on {
+  background: #f97316;
+  border-color: #f97316;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(249, 115, 22, 0.35);
+}
+
+/* Main Playing Card */
+.pf-card {
+  width: 100%;
+  border-radius: var(--radius-xl, 16px);
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 28px 20px 34px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Watermark background */
+.pf-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' width='40' height='40'%3E%3Cpath fill='%23a1a1aa' fill-opacity='0.05' d='M8 22c0-6 4-12 12-14 0 0-2 6-2 10l4 2 4-2c0-4-2-10-2-10 8 2 12 8 12 14 0 2-1 4-2 5l2 3H8l2-3c-1-1-2-3-2-5z'/%3E%3Ccircle cx='20' cy='14' r='3' fill='%23a1a1aa' fill-opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.pf-stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- Instruction Carousel --- */
+.pf-instr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 8px 12px;
+}
+
+.pf-instr-card {
+  width: 100%;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e5e7eb);
+  border-radius: 12px;
+  padding: 24px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.pf-instr-text {
+  white-space: pre-line;
+  text-align: center;
+  color: var(--color-text, #1f2937);
+  font-size: 0.935rem;
+  line-height: 1.6;
+  padding: 0 32px;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-instr-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--color-text-secondary, #9ca3af);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pf-instr-nav:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-text, #111827);
+}
+
+.pf-instr-nav.prev {
+  left: 8px;
+}
+
+.pf-instr-nav.next {
+  right: 8px;
+}
+
+.pf-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+.pf-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-text-secondary, #9ca3af);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.pf-dot.on {
+  background: #f97316;
+  border-color: #f97316;
+  transform: scale(1.25);
+}
+
+.pf-instr-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.pf-dark-btn {
+  background: #1e293b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 32px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pf-dark-btn:hover {
+  background: #334155;
+  transform: translateY(-1px);
+}
+
+.pf-skip-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.pf-skip-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-secondary);
+}
+
+.pf-preview {
+  pointer-events: none;
+  opacity: 0.85;
+  margin-top: 24px;
+  transform: scale(0.92);
+}
+
+/* --- Active Game Board --- */
+.pf-game-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pf-boardbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pf-boardbox.shake .pf-boardrow {
+  animation: pfShake 0.45s ease-in-out;
+}
+
+@keyframes pfShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+
+.pf-boardrow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.pf-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.pf-side-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text, #0f172a);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.pf-grid {
+  border: 3px solid #334155;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.pf-gridin {
+  display: grid;
+}
+
+.pf-cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  cursor: default;
+  padding: 0;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  user-select: none;
+}
+
+.pf-cell.dark {
+  background: #64748b;
+  cursor: pointer;
+}
+
+.pf-cell.dark:hover {
+  background: #475569;
+}
+
+/* Path Highlight (Success & Solution Preview) */
+.pf-cell.hl {
+  background: #10b981 !important; /* Vivid Emerald Green for path tracing */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.pf-cell.sel {
+  box-shadow: inset 0 0 0 3px #facc15 !important;
+  z-index: 2;
+}
+
+/* Thicker 3x3 block separators */
+.pf-cell.sepr {
+  border-right: 2.5px solid #1e293b;
+}
+
+.pf-cell.sepb {
+  border-bottom: 2.5px solid #1e293b;
+}
+
+/* Arrow inside cell */
+.pf-arrow-svg {
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25));
+}
+
+/* --- Control Bar --- */
+.pf-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.pf-timer-ring-wrap {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf-timer-ring-svg {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+}
+
+.pf-timetext {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text, #1e293b);
+  font-variant-numeric: tabular-nums;
+}
+
+.pf-ctl {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #1e293b;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.pf-ctl:hover:not(:disabled) {
+  background: #334155;
+  transform: translateY(-2px);
+}
+
+.pf-ctl:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pf-ctl.pf-submit {
+  background: #10b981;
+  color: #ffffff;
+  padding: 0 16px;
+  width: auto;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.pf-ctl.pf-submit:hover:not(:disabled) {
+  background: #059669;
+}
+
+.pf-ctl.pf-solution {
+  background: #f97316;
+}
+
+.pf-ctl.pf-solution:hover:not(:disabled) {
+  background: #ea580c;
+}
+
+/* Moves Counter & Stage Indicator */
+.pf-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.pf-moves {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64748b);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pf-section {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--color-text-secondary, #64748b);
+}
+
+.pf-sectiondots {
+  color: #94a3b8;
+  letter-spacing: 2px;
+}
+
+/* Modals */
+.pf-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: pfFadeIn 0.2s ease;
+}
+
+@keyframes pfFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.pf-modal-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 16px;
+  padding: 30px 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: pfSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pfSlideUp {
+  from { transform: translateY(16px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.pf-modal-ic {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.pf-modal-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 8px;
+}
+
+.pf-modal-desc {
+  font-size: 0.925rem;
+  color: var(--color-text-secondary, #475569);
+  margin-bottom: 22px;
+}
+
+.pf-continue-btn {
+  width: 100%;
+  background: #f97316;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  height: 44px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.pf-continue-btn:hover {
+  background: #ea580c;
+  transform: translateY(-1px);
+}
+
+/* Solution Modal Specific */
+.pf-sol-card {
+  max-width: 680px;
+}
+
+.pf-sol-board {
+  margin: 18px 0;
+  overflow: auto;
+  pointer-events: none;
+}
+
+/* --- Results Stage --- */
+.pf-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  text-align: center;
+  width: 100%;
+  max-width: 520px;
+}
+
+.pf-results h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+  margin-bottom: 8px;
+}
+
+.pf-results p {
+  color: var(--color-text-secondary, #64748b);
+  font-size: 0.95rem;
+}
+
+.pf-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+  margin: 28px 0;
+}
+
+.pf-stat-box {
+  background: var(--color-surface, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 12px;
+  padding: 18px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pf-stat-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  color: var(--color-text-secondary, #64748b);
+}
+
+.pf-stat-val {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-text, #0f172a);
+}
+
+.pf-results-actions {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+}

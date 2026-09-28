@@ -1,0 +1,355 @@
+/* src/components/cognitive/cognitive.css */
+/* Shared styling for Accenture Gamified Cognitive Assessment modules */
+
+.game-header {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 14px 20px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.game-header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Back button pill matching Screenshot 1 & 2: [ ← Back ] */
+.game-header-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  border-radius: 10px;
+  background: #334155;
+  border: 1px solid #475569;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.game-header-back-btn:hover {
+  background: #475569;
+  transform: translateX(-2px);
+}
+
+/* Company Logo / Mark Badge */
+.game-header-brand-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #A100FF 0%, #2563eb 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(161, 0, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.accenture-bracket {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1;
+  margin-top: -1px;
+}
+
+.game-header-title-box h2 {
+  font-size: 16.5px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 2px 0;
+}
+
+.game-header-badge {
+  font-size: 12px;
+  font-weight: 500;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.game-header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Amber Score Pill matching Screenshot 1 & 2: [ ⚡ Score: 0 ] */
+.game-header-score-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0f172a;
+  border: 1px solid #ca8a04;
+  padding: 6px 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(202, 138, 4, 0.2);
+}
+
+.score-zap-icon {
+  color: #eab308;
+}
+
+.score-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #eab308;
+}
+
+.score-number {
+  font-size: 15px;
+  font-weight: 900;
+  font-family: 'JetBrains Mono', monospace;
+  color: #eab308;
+}
+
+.game-header-sound-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #334155;
+  border: 1px solid #475569;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-header-sound-btn:hover {
+  background: #475569;
+  color: #ffffff;
+}
+
+.game-header-rules-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 10px;
+  background: #334155;
+  border: 1px solid #475569;
+  color: #cbd5e1;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.game-header-rules-btn:hover {
+  background: #475569;
+  color: #ffffff;
+}
+
+/* Pre-Game Instructions Modal */
+.game-instructions-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.game-instructions-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  width: 100%;
+  max-width: 580px;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-instructions-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.game-instructions-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.game-instructions-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(161, 0, 255, 0.1);
+  color: #A100FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-instructions-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 13.5px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.game-instruction-rule {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+}
+
+.game-instruction-rule strong {
+  color: var(--color-text-primary);
+}
+
+/* Inter-Section Transition Overlay */
+.game-transition-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1100;
+  animation: fadeIn 0.3s ease;
+}
+
+.game-transition-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.game-transition-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--color-border);
+  border-top-color: #A100FF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Shared Buttons */
+.cmc-start-btn {
+  background: linear-gradient(135deg, #A100FF 0%, #2563eb 100%);
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(161, 0, 255, 0.35);
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.cmc-start-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(161, 0, 255, 0.45);
+}
+
+.pf-btn {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  padding: 10px 18px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.pf-btn:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Daily Challenge Card */
+.dcc-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.dcc-play-btn {
+  padding: 8px 18px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #A100FF 0%, #2563eb 100%);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.dcc-play-btn:hover {
+  transform: translateY(-1px);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

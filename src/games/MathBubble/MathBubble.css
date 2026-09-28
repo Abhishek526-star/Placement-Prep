@@ -1,0 +1,232 @@
+/* src/games/MathBubble/MathBubble.css */
+/* Aligned with platform design tokens & themes */
+
+.math-bubble-container {
+  width: 100%;
+  max-width: 780px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  margin: 0 auto;
+}
+
+.mb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.mb-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mb-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mb-q-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-primary);
+  background: rgba(161, 0, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(161, 0, 255, 0.2);
+}
+
+.mb-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mb-timer-box {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'JetBrains Mono', monospace;
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  color: var(--color-primary);
+}
+
+.mb-timer-box.warning {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  animation: pulse 1s infinite;
+}
+
+.mb-instruction-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mb-instruction-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mb-instruction-highlight {
+  color: var(--color-primary);
+  font-weight: 800;
+}
+
+.mb-steps-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mb-step-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+}
+
+.mb-step-dot.active {
+  background: rgba(161, 0, 255, 0.15);
+  border-color: #A100FF;
+  color: #A100FF;
+  transform: scale(1.1);
+}
+
+.mb-step-dot.completed {
+  background: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.mb-arena {
+  width: 100%;
+  height: 380px;
+  position: relative;
+  background: radial-gradient(circle at 50% 50%, rgba(161, 0, 255, 0.03) 0%, var(--color-bg) 100%);
+  overflow: hidden;
+}
+
+.math-bubble {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  animation: floatBubble 4s ease-in-out infinite;
+}
+
+.math-bubble:hover {
+  transform: translate(-50%, -50%) scale(1.08);
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 30px rgba(161, 0, 255, 0.2);
+}
+
+.math-bubble:nth-child(2) {
+  animation-delay: -1.3s;
+}
+
+.math-bubble:nth-child(3) {
+  animation-delay: -2.6s;
+}
+
+.math-bubble.selected {
+  background: linear-gradient(135deg, rgba(161, 0, 255, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
+  border-color: #A100FF;
+  box-shadow: 0 0 25px rgba(161, 0, 255, 0.35);
+}
+
+.mb-order-pill {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #A100FF;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(161, 0, 255, 0.5);
+  animation: popIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mb-expression {
+  font-size: 19px;
+  font-weight: 900;
+  color: var(--color-text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+.mb-order-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+@keyframes floatBubble {
+  0%, 100% {
+    margin-top: 0px;
+  }
+  50% {
+    margin-top: -10px;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}

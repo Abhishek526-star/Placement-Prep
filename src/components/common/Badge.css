@@ -1,0 +1,57 @@
+/* src/components/common/Badge.css */
+.app-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.app-badge--sm {
+  padding: 3px 8px;
+  font-size: 11px;
+}
+.app-badge--md {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+/* Variants */
+.app-badge--default {
+  background: var(--color-surface-elevated, #f1f5f9);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.app-badge--primary {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+}
+
+.app-badge--success {
+  background: rgba(22, 163, 74, 0.12);
+  color: var(--color-success);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.app-badge--warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: var(--color-warning);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.app-badge--danger {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--color-danger);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.app-badge--info {
+  background: rgba(14, 165, 233, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(14, 165, 233, 0.25);
+}
