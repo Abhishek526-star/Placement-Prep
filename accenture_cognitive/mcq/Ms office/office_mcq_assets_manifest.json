@@ -1,0 +1,15 @@
+{
+  "json": "ms_office_computer_fundamentals_mcq_verified_with_images.json",
+  "assets_folder": "assets/",
+  "image_questions": [
+    "002",
+    "003",
+    "004",
+    "005",
+    "006",
+    "008",
+    "010",
+    "134"
+  ],
+  "image_path_pattern": "assets/q{question_number:03d}.png"
+}
